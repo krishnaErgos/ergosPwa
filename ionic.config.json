@@ -1,0 +1,7 @@
+{
+  "name": "ergosPwa",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
