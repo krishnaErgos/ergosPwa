@@ -37,4 +37,39 @@
       </ion-button>
     </ion-card-content>
   </ion-card>
+
+
+  <ion-button slot="end">
+    <ion-item>
+      <ion-label>
+        <ion-icon size="large" name="Bluetooth"></ion-icon>
+     </ion-label>
+     <ion-toggle (ionOnChange)="toggleBle($event)" [(ngModel)]="ble"></ion-toggle>
+    </ion-item>
+  </ion-button>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col>
+      <ion-button *ngIf="scanText===''" (click)="startScanning()" style="width:100%">
+        <ion-icon size="large" name="refresh-circle"></ion-icon>
+        Scan
+      </ion-button>
+    </ion-col>
+    <ion-col></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="text-align:center">
+        {{scanText}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list>
+    <ion-item *ngFor="let d of devices; let i = index">
+        <b style="color:#fff"> {{d.localName}}</b>
+        <ion-button (click)="connect(d,i)" *ngIf="!d.connection" slot="end">Connect</ion-button>
+        <ion-button (click)="disconnect(d,i)" *ngIf="d.connection" slot="end">DisConnect</ion-button>
+    </ion-item>
+  </ion-list>
 </ion-content>
